@@ -1,3 +1,34 @@
 <resources>
-    <string name="app_name">Hooay-weather-app</string>
+    <string name="app_name">Der Weather</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="nav_item_add">Add</string>
+    <string name="nav_item_edit">Edit</string>
+    <string name="nav_item_today">Today</string>
+    <string name="nav_item_share">Share</string>
+    <string name="nav_item_settings">Settings</string>
+    <string name="nav_item_about">About</string>
+
+    <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_add</item>
+        <item>@string/nav_item_edit</item>
+        <item>@string/nav_item_today</item>
+        <item>@string/nav_item_share</item>
+        <item>@string/nav_item_settings</item>
+        <item>@string/nav_item_about</item>
+    </string-array>
+    
+    <string name="title_add">Add Location</string>
+    <string name="title_edit">Edit Location</string>
+    <string name="title_today">Today weather</string>
+    <string name="title_share">Sharing</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_about">About us</string>
+
 </resources>

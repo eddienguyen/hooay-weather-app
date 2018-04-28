@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/windowBackground">
+
+
+    <LinearLayout
+        android:id="@+id/date_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/windowBackground"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <!--TODAY-->
+        <TextView
+            android:id="@+id/txtNavTodayDate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="27"
+            android:textStyle="bold"
+            android:textSize="34dp"
+            android:paddingLeft="10dp"/>
+
+        <!--THE NEXT DAY-->
+        <TextView
+            android:id="@+id/txtNavNextDay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Fri"
+            android:gravity="top|center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+        <!--THE NEXT DAY2-->
+        <TextView
+            android:id="@+id/txtNavNextDay2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Sat"
+            android:gravity="top|center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+        <!--THE NEXT DAY-3-->
+        <TextView
+            android:id="@+id/txtNavNextDay3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Sun"
+            android:gravity="top|center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+        <!--THE NEXT DAY-4-->
+        <TextView
+            android:id="@+id/txtNavNextDay4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Mon"
+            android:gravity="top|center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/txtNavTempContainer"
+        android:layout_below="@+id/date_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <!--TODAY-->
+        <TextView
+            android:id="@+id/txtNavTodayTemp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Ba Dinh"
+            android:textStyle="bold"
+            android:textSize="28dp"
+            android:paddingLeft="10dp"/>
+
+        <!--THE NEXT DAY-->
+        <TextView
+            android:id="@+id/txtNavNextDayTemp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="27"
+            android:gravity="top|center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+        <!--THE NEXT DAY2-->
+        <TextView
+            android:id="@+id/txtNavNextDay2Temp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="29"
+            android:gravity="top|center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+        <!--THE NEXT DAY-3-->
+        <TextView
+            android:id="@+id/txtNavNextDay3Temp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="28"
+            android:gravity="top|center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+        <!--THE NEXT DAY-4-->
+        <TextView
+            android:id="@+id/txtNavNextDay4Temp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="29"
+            android:gravity="top|center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/drawerList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        ></android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
