@@ -31,4 +31,21 @@
     <string name="title_settings">Settings</string>
     <string name="title_about">About us</string>
 
+    <!--Prefs-->
+    <string name="location_title">Location</string>
+    <string name="pref_location_title">Choose your location</string>
+    <string name="pref_unit_title">Measure unit</string>
+    <string name="temp_title">Temperature unit</string>
+    <string name="summary_location">Current location</string>
+    <string name="summary_temp">Current Temperature unit</string>
+
+    <string-array name="unit_names">
+        <item>°C</item>
+        <item>°F</item>
+    </string-array>
+    <string-array name="unit_values">
+        <item>c</item>
+        <item>f</item>
+    </string-array>
+
 </resources>

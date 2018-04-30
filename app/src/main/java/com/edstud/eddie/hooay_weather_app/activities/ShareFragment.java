@@ -13,12 +13,12 @@ import com.edstud.eddie.hooay_weather_app.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Today.OnFragmentInteractionListener} interface
+ * {@link ShareFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Today#newInstance} factory method to
+ * Use the {@link ShareFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Today extends Fragment {
+public class ShareFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +30,7 @@ public class Today extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public Today() {
+    public ShareFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +40,11 @@ public class Today extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Today.
+     * @return A new instance of fragment ShareFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Today newInstance(String param1, String param2) {
-        Today fragment = new Today();
+    public static ShareFragment newInstance(String param1, String param2) {
+        ShareFragment fragment = new ShareFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +65,7 @@ public class Today extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_today, container, false);
+        return inflater.inflate(R.layout.fragment_share, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,16 +75,16 @@ public class Today extends Fragment {
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
 
     @Override
     public void onDetach() {

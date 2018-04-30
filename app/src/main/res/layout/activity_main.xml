@@ -27,7 +27,8 @@
 
         <FrameLayout
             android:layout_width="fill_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/container_body">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -286,6 +287,7 @@
 
     </LinearLayout>
 
+    <!--navigation drawer that comes from the left-->
     <fragment
         android:id="@+id/fragment_navigation_drawer"
         android:name="com.edstud.eddie.hooay_weather_app.activities.FragmentDrawer"
