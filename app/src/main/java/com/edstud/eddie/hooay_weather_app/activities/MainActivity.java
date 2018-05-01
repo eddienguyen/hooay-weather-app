@@ -1,6 +1,8 @@
 package com.edstud.eddie.hooay_weather_app.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -8,11 +10,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
 import com.edstud.eddie.hooay_weather_app.R;
+import com.edstud.eddie.hooay_weather_app.model.Weather;
+import com.edstud.eddie.hooay_weather_app.provider.YahooClient;
 
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
     private static String TAG = MainActivity.class.getSimpleName();
@@ -20,6 +26,11 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private Toolbar mToolbar;
     FragmentDrawer drawerFragment;
     private TextView txtCity;
+    private SharedPreferences prefs;
+    private RequestQueue requestQueue;
+
+    TextView lineTxt, temp, tempUnit, tempMin, tempMax, windDetailData, humidityDetailData, pressureDetailData,
+            visibilityDetailData, sunriseDetailData, sunsetDetailData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +39,84 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         txtCity = (TextView) mToolbar.findViewById(R.id.txtCity);
+        lineTxt = findViewById(R.id.lineTxt);
+        temp = findViewById(R.id.temp);
+        tempUnit = findViewById(R.id.tempUnit);
+        tempMin = findViewById(R.id.tempMin);
+        tempMax = findViewById(R.id.tempMax);
+        windDetailData = findViewById(R.id.windDetailData);
+        humidityDetailData = findViewById(R.id.humidityDetailData);
+        pressureDetailData = findViewById(R.id.pressureDetailData);
+        visibilityDetailData = findViewById(R.id.visibilityDetailData);
+        sunriseDetailData = findViewById(R.id.sunriseDetailData);
+        sunsetDetailData = findViewById(R.id.sunsetDetailData);
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
         drawerFragment = (FragmentDrawer) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
 
-        displayView(0);
+        refreshData();
+    }
+
+    private void refreshData() {
+        if (prefs == null) return;
+
+        String woeid = prefs.getString("woeid", null);
+
+        if (woeid != null) {
+            String loc = prefs.getString("cityName", null) + "," + prefs.getString("country", null);
+            final String unit = prefs.getString("edstud_temp_unit", null);
+
+            YahooClient.getWeather(woeid, unit, requestQueue, new YahooClient.WeatherClientListener() {
+                @Override
+                public void onWeatherResponse(Weather weather) {
+                    //Update view
+                    int code = weather.condition.code;
+
+                    lineTxt.setText(weather.condition.description);
+                    temp.setText(weather.condition.temp);
+
+                    int resId = getResource(weather.units.temperature, weather.condition.temp);
+                    tempUnit.setText(weather.units.temperature);
+                    tempMin.setText("" + weather.forecast.tempMin + " " + weather.units.temperature);
+                    tempMax.setText("" + weather.forecast.tempMax + " " + weather.units.temperature);
+
+
+
+                }
+            });
+        }
+    }
+
+    private float convertToC(String unit, float val) {
+        if (unit.equalsIgnoreCase("Â°C"))
+            return val;
+
+        return (float) ((val - 32) / 1.8);
+    }
+
+
+    private int getResource(String unit, float val) {
+        float temp = convertToC(unit, val);
+        Log.d("SwA", "Temp [" + temp + "]");
+        int resId = 0;
+        if (temp < 10) {
+//            resId = R.drawable.line_shape_blue;
+        } else if (temp >= 10 && temp <= 24) {
+//            resId = R.drawable.line_shape_green;
+        } else if (temp > 25) {
+//            resId = R.drawable.line_shape_red;
+        }
+
+
+        return resId;
+
     }
 
 
@@ -92,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         }
 
         //switching fragments
-        if (fragment != null){
+        if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_body, fragment);

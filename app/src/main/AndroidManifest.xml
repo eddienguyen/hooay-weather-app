@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.WeatherPreferenceActivity"></activity>
-        <activity android:name=".activities.CityFinderActivity"></activity>
+        <activity android:name="com.edstud.eddie.hooay_weather_app.activities.CityFinderActivity"></activity>
     </application>
 
 </manifest>

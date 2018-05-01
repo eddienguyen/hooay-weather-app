@@ -6,7 +6,7 @@
             android:title="@string/pref_location_title"
             android:key="edstud_location">
             <intent
-                android:targetPackage="com.edstud.eddie.hooay_weather_app"
+                android:targetPackage="com.edstud.eddie.hooay_weather_app.activities"
                 android:targetClass="com.edstud.eddie.hooay_weather_app.activities.CityFinderActivity"/>
         </Preference>
     </PreferenceCategory>

@@ -1,5 +1,6 @@
 package com.edstud.eddie.hooay_weather_app.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -31,7 +32,7 @@ public class CityFinderActivity extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cityresult_layout);
-        AutoCompleteTextView edt = this.findViewById(R.id.edtCity);
+        AutoCompleteTextView edt = (AutoCompleteTextView) findViewById(R.id.edtCity);
         CityAdapter adapter = new CityAdapter(this, null);
         edt.setAdapter(adapter);
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -53,7 +54,7 @@ public class CityFinderActivity extends Activity{
 
     private class CityAdapter extends ArrayAdapter<CityResult> implements Filterable{
         private Context context;
-        private List<CityResult> cityList = new ArrayList<CityResult>();
+        private List<CityResult> cityList;
 
         public CityAdapter(Context context, List<CityResult> cityList){
             super(context, R.layout.cityresult_layout, cityList);
